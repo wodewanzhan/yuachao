@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>浏览器起始页</title>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+      border: none;
+    }
+
+    body {
+      background: url(https://pic3.zhimg.com/v2-e5427c1e9ad8aaad99d643e7bd7e927b_r.jpg?source=1940ef5c);
+      background-size: 100% 100vh;
+      background-repeat: no-repeat;
+    }
+
+    .a1 {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+
+    .a2 {
+      background-color: rgba(255, 255, 255, 0.2);
+      display: flex;
+      justify-content: start;
+      width: 400px;
+      height: 18px;
+      border: solid 1px rgba(255, 255, 255, 0.4);
+      border-radius: 25px 0px 0px 25px;
+      border-width: 1px;
+      padding: 13px;
+      z-index: 1;
+      transition: all 0.5s;
+      color: rgb(255, 255, 255);
+      font-weight: lighter;
+      outline-style: none;
+      font-size: 15px;
+    }
+
+    .a2:hover {
+      box-shadow: 0px 0px 20px 3px rgba(255, 255, 255, 0.895);
+    }
+
+    .a5:hover {
+      box-shadow: 0px 0px 20px 3px rgba(255, 255, 255, 0.895);
+    }
+
+    .a3 {
+      color: white;
+      font-weight: lighter;
+    }
+
+    .a4 {
+      color: white;
+      font-weight: lighter;
+      background-color: rgba(255, 255, 255, 0);
+      font-size: 15px;
+    }
+
+    .a5 {
+      background-color: rgba(255, 255, 255, 0.2);
+      width: 35px;
+      height: 18px;
+      border: solid 1px rgba(255, 255, 255, 0.4);
+      border-radius: 0px 25px 25px 0px;
+      border-width: 1px;
+      padding: 13px;
+      z-index: 2;
+      display: flex;
+      cursor: pointer;
+      transition: all 0.5s;
+    }
+
+    .b1 {
+      margin: 90px 0px 0px 0px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .b2 {
+      height: 50px;
+      width: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px;
+      border-radius: 50px;
+      margin: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 16px;
+      font-family: "microsoft yahei";
+      font-weight: 50;
+      transition: all 0.5s;
+      cursor: pointer
+    }
+
+    .b2:hover {
+      height: 60px;
+      width: 95px;
+      box-shadow: 0px 0px 20px 3px rgba(255, 255, 255, 0.895);
+    }
+
+    .d:hover {
+      background-color: rgb(205, 228, 255);
+    }
+
+    .d2:hover {
+      background-color: aliceblue;
+    }
+
+    .d {
+      height: 30px;
+      width: 65px;
+      display: flex;
+      background-color: rgb(255, 255, 255);
+      border: solid 2px rgb(200, 200, 200);
+      padding: 8px;
+      border-radius: 25px;
+      margin: 3px 0px 0px 3px;
+    }
+
+    .d1 {
+      line-height: 40px;
+      width: 120px;
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .d2 {
+      background-color: rgb(179, 201, 239);
+      border: solid 2px rgb(186, 218, 247);
+      border-radius: 25px;
+      display: none;
+      font-size: 15px;
+      animation: 0.8s ease 0s 1 normal forwards running bounceIn;
+    }
+
+
+    #txt {
+      font-size: 60px;
+      font-weight: 150;
+      color: white;
+      text-align: center;
+      margin-top: 180px;
+      transition: all 0.5s
+    }
+
+    ::-webkit-input-placeholder {
+      /* WebKit, Blink, Edge */
+      color: white;
+    }
+
+    :-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      color: white;
+      opacity: 1;
+    }
+
+    ::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: white;
+      opacity: 1;
+    }
+
+    :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: white;
+    }
+
+    @media (max-width: 800px) {
+      body {
+        background: url(https://pic1.zhimg.com/v2-e4cb439d8ada8096b20a6414e9c1fa51_r.jpg?source=1940ef5c);
+        background-size: 100% 100vh;
+      }
+
+      .b2 {
+        height: 40px;
+        width: 60px;
+        font-size: 7px;
+        font-family: "microsoft yahei";
+        display: flex;
+        justify-content: space-evenly;
+        margin: 2px;
+      }
+
+      .a2 {
+        width: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body onload="startTime()">
+  <!--时间-->
+  <div id="txt"></div>
+  <!--搜索区-->
+  <form target="_blank" method="get" action="https://www.baidu.com/s">
+    <div class="a1">
+      <input type="text" class="a2" name="word" placeholder="这是一个搜索..... ">
+      <div>
+      </div>
+      <div class="a5">
+        <input type="submit" value="搜索" class="a4">
+      </div>
+    </div>
+  </form>
+  <!--内容区-->
+  <div class="b1">
+    <!--选区-->
+    <div class="b2" onclick="window.open('https://www.midorg.com/');">
+      <p>元岛</p>
+    </div>
+    <div class="b2" onclick="window.open('https://developer.mozilla.org/zh-CN/');">
+      <p>mdn</p>
+    </div>
+    <div class="b2" onclick="window.open('https://www.runoob.com');">
+      <p>菜鸟教程</p>
+    </div>
+    <div class="b2" onclick="window.open('https://github.com/');">
+      <p>Github</p>
+    </div>
+    <div class="b2" onclick="window.open('https://www.bilibili.com/');">
+      <p>bilibili</p>
+    </div>
+    <div class="b2" onclick="window.open('https://kangwenchang.com/')">
+      <p>康文昌</p>
+    </div>
+  </div>
+
+  <script>
+    function startTime() {
+      var today = new Date();
+      var h = today.getHours();
+      var m = today.getMinutes();
+      var s = today.getSeconds(); // 在小于10的数字前加一个‘0’
+      m = checkTime(m);
+      s = checkTime(s);
+      document.getElementById("txt").innerHTML = h + ":" + m + ":" + s;
+      t = setTimeout(function () {
+        startTime(), 500;
+      });
+    }
+    function checkTime(i) {
+      if (i < 10) {
+        i = "0" + i;
+      }
+      return i;
+    }
+  </script>
+</body>
+
+</html>
