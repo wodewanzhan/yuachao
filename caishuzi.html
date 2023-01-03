@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>猜数字游戏</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+      body {
+        width: 50%;
+        max-width: 800px;
+        min-width: 480px;
+        margin: 0 auto;
+      }
+      .caiduicaicuo {
+        color: white;
+        padding: 3px;
+      }
+      .shurukuang {
+        outline: none;
+        border-radius: 10px;
+        padding: 3px;
+      }
+      .anniu {
+        border-radius: 25px;
+        height: 30px;
+        width: 50px;
+        border: solid 1px;
+      }
+      .anniu:hover {
+        background-color: rgb(216, 216, 216);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>猜数字游戏</h1>
+    <p>
+      请你猜出100到1以内的一个数字。 看你能否在7次以内猜中它。
+      我每次都会告诉你猜的结果是高了还是低了。
+    </p>
+    <div>
+      <label for="shurukuang">请猜数：</label>
+      <input type="text" id="shurukuang" class="shurukuang" />
+      <input type="submit" value="我猜" class="anniu" />
+    </div>
+
+    <div class="kuai">
+      <p class="shangcicaideshu"></p>
+      <p class="caiduicaicuo"></p>
+      <p class="caigaocaidi"></p>
+    </div>
+
+    <script>
+      // 随机一个100到1的数字
+      let suijishu = Math.floor(Math.random() * 100) + 1;
+      //
+      const shangcicaideshu = document.querySelector(".shangcicaideshu");
+      const caiduicaicuo = document.querySelector(".caiduicaicuo");
+      const caigaocaidi = document.querySelector(".caigaocaidi");
+      const anniu = document.querySelector(".anniu");
+      const shurukuang = document.querySelector(".shurukuang");
+      let huihe = 1;
+      let fuweianniu;
+
+      function guize() {
+        let srkdnr = Number(shurukuang.value);
+        if (huihe === 1) {
+          shangcicaideshu.textContent = "上次猜的数字：";
+        }
+        // 这里是上次猜的数字显示    下
+        shangcicaideshu.textContent += srkdnr + " ";
+
+        if (srkdnr === suijishu) {
+          caiduicaicuo.textContent = "恭喜你！猜对了！";
+          caiduicaicuo.style.backgroundColor = "green";
+          caigaocaidi.textContent = "";
+          // 这里是重新开始的函数
+          choxinkaishi();
+        } else if (huihe === 7) {
+          caiduicaicuo.textContent = "!!!游戏结束!!!";
+          caigaocaidi.textContent = "";
+          // 这里是重新开始的函数
+          choxinkaishi();
+        } else {
+          caiduicaicuo.textContent = "你猜错了！";
+          caiduicaicuo.style.backgroundColor = "red";
+          if (srkdnr < suijishu) {
+            caigaocaidi.textContent = "你刚才猜低了!";
+          } else if (srkdnr > suijishu) {
+            caigaocaidi.textContent = "你刚才猜高了！";
+          }
+        }
+        // 回合数加1
+        huihe++;
+        //
+        shurukuang.value = "";
+        shurukuang.focus();
+      }
+
+      anniu.addEventListener("click", guize);
+
+      function choxinkaishi() {
+        shurukuang.disabled = true;
+        anniu.disabled = true;
+        fuweianniu = document.createElement("button");
+        fuweianniu.textContent = "开始新游戏";
+        document.body.appendChild(fuweianniu);
+        fuweianniu.addEventListener("click", choqi);
+      }
+
+      function choqi() {
+        huihe = 1;
+        const qingchuduanluo = document.querySelectorAll(".kuai p");
+        for (let i = 0; i < qingchuduanluo.length; i++) {
+          qingchuduanluo[i].textContent = "";
+        }
+
+        fuweianniu.parentNode.removeChild(fuweianniu);
+        shurukuang.disabled = false;
+        anniu.disabled = false;
+        shurukuang.value = "";
+        shurukuang.focus();
+        caiduicaicuo.style.backgroundColor = "white";
+        suijishu = Math.floor(Math.random() * 100) + 1;
+      }
+    </script>
+  </body>
+</html>
